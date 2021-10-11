@@ -6,11 +6,17 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Authprovider from './Context/Authprovider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Shipping from './components/Shipping/Shipping';
 
 function App() {
   return (
     <div>
-      <Router>
+     <Authprovider>
+     <Router>
         <Header></Header>
         <Switch>
           <Route exact path="/">
@@ -22,18 +28,27 @@ function App() {
           <Route path="/review">
             <OrderReview></OrderReview>
           </Route>
-          <Route path="/inventory">
+          <PrivateRoute path="/inventory">
             <Inventory></Inventory>
-          </Route>
-          <Route path='/placeorder'>
+          </PrivateRoute>
+          <PrivateRoute path="/shipping">
+            <Shipping></Shipping>
+          </PrivateRoute>
+          <PrivateRoute path='/placeorder'>
             <PlaceOrder></PlaceOrder>
-
+          </PrivateRoute>
+          <Route path='/login'>
+            <Login></Login>
+          </Route>
+          <Route path='/register'>
+            <Register></Register>
           </Route>
           <Route path="*">
             <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>
+     </Authprovider>
     </div>
   );
 }
