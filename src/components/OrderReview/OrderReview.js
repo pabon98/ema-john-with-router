@@ -3,7 +3,7 @@ import useProducts from '../../Hooks/useProducts';
 import useCart from '../../Hooks/useCart'
 import Cart from '../Cart/Cart'
 import ReviewItem from '../ReviewItem/ReviewItem';
-import { clearTheCart, removeFromDb } from '../../utilities/fakedb';
+import { removeFromDb } from '../../utilities/fakedb';
 import { useHistory } from 'react-router-dom';
 
 const OrderReview = () => {
